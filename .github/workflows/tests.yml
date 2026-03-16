@@ -1,0 +1,41 @@
+name: teste
+on:
+    push:
+    pull_request:
+jobs:
+    teste:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checar o repostorio
+              uses: actions/checkout@v4
+
+            - name: Baixar o python
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.14"
+
+            - name: Instalar dependecias
+              run: |
+                pip install requirements.txt
+
+            - name: Instalar Playwright
+              run: |
+                pip install playwright --with-deps
+
+            - name: Rodar os testes
+              run: |
+                pytest -v
+              
+        
+
+                
+              
+
+
+            
+            
+       
+            
+
+

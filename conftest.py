@@ -53,8 +53,12 @@ def checkout_page(logged_page):
 def checkout_two_page(logged_page):
     inventory = InventoryPage(logged_page)
     inventory.inventory_to_cart()
+
     cart = CartPage(logged_page)
     cart.cart_to_checkout()
+
     checkout = CheckoutPage(logged_page)
     checkout.checkout_one_to_two()
+
+    return CheckoutTwoPage(logged_page)
 

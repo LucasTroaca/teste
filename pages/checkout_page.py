@@ -8,7 +8,8 @@ class CheckoutPage:
         self.last_name = page.locator("#last-name")
         self.zip = page.locator("#postal-code")
         self.continue_buy = page.locator("#continue")
-        self.url_checkout_two = "https://www.saucedemo.com/checkout-step-one.html"
+        self.url_checkout_one = "https://www.saucedemo.com/checkout-step-one.html"
+        self.url_checkout_two = "https://www.saucedemo.com/checkout-step-two.html"
         self.title = page.locator(".title")
 
     def checkout_one_to_two(self):
@@ -17,6 +18,9 @@ class CheckoutPage:
         self.zip.fill("zip")
         self.continue_buy.click()
 
-    def expect_checkout_one(self):
+    def expect_checkout_two(self):
         expect(self.page).to_have_url(self.url_checkout_two)
-        expect(self.title).to_have_text("Checkout: Your Information")
+        expect(self.title).to_have_text("Checkout: Overview")
+
+    def expect_checkout_one(self):
+        expect(self.page).to_have_url(self.url_checkout_one)
