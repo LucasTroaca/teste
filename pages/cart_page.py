@@ -1,14 +1,13 @@
-import pytest
+from .base_page import BasePage
+from config.config import URLS
 from playwright.sync_api import expect
-
 class CartPage:
-    def __init__(self, page):
-        self.page = page
-        self.checkout = page.locator("#checkout")
-        self.continue_shopping = page.locator("#continue-shopping")
-        self.url_checkout = "https://www.saucedemo.com/checkout-step-one.html"
+    def __init__(self, BasePage):
+        self.checkout = BasePage.locator("#checkout")
+        self.continue_shopping = BasePage.locator("#continue-shopping")
+        self.url_checkout = URLS["checkout_url"]
 
-    def checkout_click(self):
+    def click_checkout(self):
         self.checkout.click()
 
     def expect_checkout(self):

@@ -1,5 +1,5 @@
 import pytest
-from pages.login_page import LoginPage
+from s.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
@@ -13,8 +13,8 @@ def logged_page(page):
     return page
 
 @pytest.fixture
-def e2e(page):
-    login = LoginPage(page)
+def e2e(logged_page):
+    login = LoginPage(logged_page)
     login.go_to()
     login.login("standard_user", "secret_sauce")
     inventory = InventoryPage(logged_page)
@@ -31,7 +31,7 @@ def login_page(page):
 @pytest.fixture
 def inventory_page(logged_page):
     inventory = InventoryPage(logged_page)
-    inventory.bars.click()
+    inventory.open_menu.click()
     inventory.reset.click()
     return inventory
 

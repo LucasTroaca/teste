@@ -15,15 +15,11 @@ jobs:
       - name: Baixar o python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
+          python-version: "3.11"
 
       - name: Instalar dependencias
         run: |
           pip install -r requirements.txt
-
-      - name: Instalar Playwright
-        run: |
-          pip install playwright
 
       - name: Instalar browsers
         run: |
@@ -31,4 +27,4 @@ jobs:
 
       - name: Rodar os testes
         run: |
-          pytest -v
+          pytest -v --maxfail=1
