@@ -1,13 +1,14 @@
 from .base_page import BasePage
 from config.config import URLS
 from playwright.sync_api import expect
-class CartPage:
-    def __init__(self, BasePage):
-        self.checkout = BasePage.locator("#checkout")
-        self.continue_shopping = BasePage.locator("#continue-shopping")
+class CartPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.checkout = page.locator("#checkout")
+        self.continue_shopping = page.locator("#continue-shopping")
         self.url_checkout = URLS["checkout_url"]
 
-    def click_checkout(self):
+    def checkout_click(self):
         self.checkout.click()
 
     def expect_checkout(self):
